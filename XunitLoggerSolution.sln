@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xunit.Logging", "src\XunitLogger\Xunit.Logging.csproj", "{0FE5DA83-E1B1-40C8-AD5D-85D5C7B96E69}"
+Project("{0FE5DA83-E1B1-40C8-AD5D-85D5C7B96E69}") = "Xunit.Logging", "src\XunitLogger\Xunit.Logging.csproj", "{0FE5DA83-E1B1-40C8-AD5D-85D5C7B96E69}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XunitLoggerTest", "tests\XunitLoggerTest\XunitLoggerTest.csproj", "{E56A8E82-7E73-4721-B961-06DFBDF0F11D}"
+Project("{E56A8E82-7E73-4721-B961-06DFBDF0F11D}") = "XunitLoggerTest", "tests\XunitLoggerTest\XunitLoggerTest.csproj", "{E56A8E82-7E73-4721-B961-06DFBDF0F11D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
