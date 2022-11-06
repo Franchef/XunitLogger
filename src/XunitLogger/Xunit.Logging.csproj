@@ -1,23 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
     <Title>xUnit Logger</Title>
     <RepositoryUrl>https://github.com/Franchef/XunitLogger</RepositoryUrl>
     <PackageTags>xUnit; Logger; xUnit log;</PackageTags>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
-    <FileVersion>1.0.0</FileVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
     <Company>Franchef</Company>
     <Authors>$(Authors)</Authors>
     <Description>A logger for xUnit output for lazy people (like me)</Description>
     <PackageIcon>xunit.png</PackageIcon>
   </PropertyGroup>
   <ItemGroup>
-	  <None Include="xunit.png" Pack="true" PackagePath=""/>
+	  <None Include="xunit.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="xunit.abstractions" Version="2.0.3" />
+    <PackageReference Include="XunitXml.TestLogger" Version="3.0.70" />
   </ItemGroup>
 </Project>
