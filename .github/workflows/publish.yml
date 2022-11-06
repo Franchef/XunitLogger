@@ -23,5 +23,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
       - name: Test
         run: dotnet test --no-restore --verbosity normal
+      - name: Pack
+        run: dotnet pack src/XunitLogger/XunitLogger.csproj --no-build --no-restore --output output/
       - name: Publish NuGet
-        run: dotnet nuget push **.nupkg -k ${{ secrets.NuGetAPIKey }} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push output/*.nupkg -k ${{ secrets.NuGetAPIKey }} -s https://api.nuget.org/v3/index.json
