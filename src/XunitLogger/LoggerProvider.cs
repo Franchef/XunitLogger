@@ -22,7 +22,7 @@ namespace Xunit.Logging
         }
 
         public ILogger CreateLogger(string categoryName) => _loggers.GetOrAdd(categoryName, name => new Logger(_testOutputHelper, _scopeProvider, name));
-        public ILogger<T> CreateLogger<T>() => CreateLogger(_scopeProvider, typeof(T).Name);
+        public ILogger<T> CreateLogger<T>() => _loggers.GetOrAdd(typeof(T).Name, name => new Logger(_testOutputHelper, _scopeProvider, name));
 
         public void Dispose()
         {
