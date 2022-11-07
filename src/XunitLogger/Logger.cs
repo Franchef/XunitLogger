@@ -38,7 +38,7 @@ namespace Xunit.Logging
         }
     }
 
-    internal sealed class Logger<T> : Logger, ILogger<T>
+    internal sealed class Logger<out T> : Logger, ILogger<T>
     {
         public Logger(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider scopeProvider) : base(testOutputHelper, scopeProvider, typeof(T).FullName)
         {
