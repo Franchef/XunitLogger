@@ -4,8 +4,8 @@
     <Title>xUnit Logger</Title>
     <RepositoryUrl>https://github.com/Franchef/XunitLogger</RepositoryUrl>
     <PackageTags>xUnit; Logger; xUnit log;</PackageTags>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <FileVersion>1.2.0</FileVersion>
     <Company>Franchef</Company>
     <Authors>$(Authors)</Authors>
     <Description>A logger for xUnit output for lazy people (like me)</Description>
