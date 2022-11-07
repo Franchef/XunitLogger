@@ -4,16 +4,16 @@ using Xunit.Abstractions;
 
 namespace Xunit.Logging
 {
-    public class Logger : ILogger
+    public class XUnitLogger : ILogger
     {
         private readonly ITestOutputHelper _testOutputHelper;
         private readonly LoggerExternalScopeProvider _scopeProvider;
         private readonly string _name;
 
-        public static ILogger CreateLogger(ITestOutputHelper testOutputHelper) => new Logger(testOutputHelper, new LoggerExternalScopeProvider(), "");
-        public static ILogger<T> CreateLogger<T>(ITestOutputHelper testOutputHelper) => new Logger<T>(testOutputHelper, new LoggerExternalScopeProvider());
+        public static ILogger CreateLogger(ITestOutputHelper testOutputHelper) => new XUnitLogger(testOutputHelper, new LoggerExternalScopeProvider(), "");
+        public static ILogger<T> CreateLogger<T>(ITestOutputHelper testOutputHelper) => new XUnitLogger<T>(testOutputHelper, new LoggerExternalScopeProvider());
 
-        public Logger(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider scopeProvider, string name)
+        public XUnitLogger(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider scopeProvider, string name)
         {
             _testOutputHelper = testOutputHelper;
             _scopeProvider = scopeProvider;
@@ -38,9 +38,9 @@ namespace Xunit.Logging
         }
     }
 
-    internal sealed class Logger<out T> : Logger, ILogger<T>
+    internal sealed class XUnitLogger<T> : Logger, ILogger<T>
     {
-        public Logger(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider scopeProvider) : base(testOutputHelper, scopeProvider, typeof(T).FullName)
+        public XUnitLogger(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider scopeProvider) : base(testOutputHelper, scopeProvider, typeof(T).FullName)
         {
 
         }
