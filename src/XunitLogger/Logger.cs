@@ -20,8 +20,8 @@ namespace Xunit.Logging
             _name = name;
         }
 
-        public IDisposable BeginScope<TState>(TState state) => _scopeProvider.Push(state);;
-        public bool IsEnabled(LogLevel logLevel) => logLevel != LogLevel.None;;
+        public IDisposable BeginScope<TState>(TState state) => _scopeProvider.Push(state);
+        public bool IsEnabled(LogLevel logLevel) => logLevel != LogLevel.None;
 
         public void Log<TState>(
             LogLevel logLevel,
