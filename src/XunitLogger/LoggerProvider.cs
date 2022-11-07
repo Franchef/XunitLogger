@@ -21,8 +21,8 @@ namespace Xunit.Logging
             _testOutputHelper = testOutputHelper;
         }
 
-        public ILogger CreateLogger(string categoryName) => _loggers.GetOrAdd(categoryName, name => Logger.CreateLogger(_testOutputHelper, _scopeProvider, name));
-        public ILogger<T> CreateLogger<T>() => _loggers.GetOrAdd(typeof(T).Name, name => Logger.CreateLogger<T>(_testOutputHelper, _scopeProvider));
+        public ILogger CreateLogger(string categoryName) => _loggers.GetOrAdd(categoryName, name => new Logger(_testOutputHelper, _scopeProvider, name));
+        public ILogger<T> CreateLogger<T>() => _loggers.GetOrAdd(typeof(T).Name, name => new Logger<T>(_testOutputHelper, _scopeProvider));
 
         public void Dispose()
         {
