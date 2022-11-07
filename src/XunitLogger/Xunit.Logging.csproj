@@ -6,8 +6,9 @@
     <PackageTags>xUnit; Logger; xUnit log;</PackageTags>
     <AssemblyVersion>1.2.0</AssemblyVersion>
     <FileVersion>1.2.0</FileVersion>
+    <Version>1.2.0</Version>
     <Company>Franchef</Company>
-    <Authors>$(Authors)</Authors>
+    <Authors>Franchef</Authors>
     <Description>A logger for xUnit output for lazy people (like me)</Description>
     <PackageIcon>xunit.png</PackageIcon>
   </PropertyGroup>
