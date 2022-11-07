@@ -4,16 +4,23 @@ using Xunit.Abstractions;
 
 namespace Xunit.Logging
 {
-    public class XUnitLogger : ILogger
+    public class Logger : ILogger
     {
         private readonly ITestOutputHelper _testOutputHelper;
         private readonly LoggerExternalScopeProvider _scopeProvider;
         private readonly string _name;
 
-        public static ILogger CreateLogger(ITestOutputHelper testOutputHelper) => new XUnitLogger(testOutputHelper, new LoggerExternalScopeProvider(), "");
-        public static ILogger<T> CreateLogger<T>(ITestOutputHelper testOutputHelper) => new XUnitLogger<T>(testOutputHelper, new LoggerExternalScopeProvider());
+        public static ILogger CreateLogger(ITestOutputHelper testOutputHelper, string name = "") => new Logger(testOutputHelper, new LoggerExternalScopeProvider(), name);
+        public static ILogger CreateLogger(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider loggerExternalScopeProvider, string name = "") => new Logger(testOutputHelper, loggerExternalScopeProvider, name);
+        public static ILogger<T> CreateLogger<T>(ITestOutputHelper testOutputHelper) => new Logger<T>(testOutputHelper, new LoggerExternalScopeProvider());
+        
+        public static ILogger<T> CreateLogger<T>(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider loggerExternalScopeProvider) => new Logger<T>(testOutputHelper, loggerExternalScopeProvider);
 
-        public XUnitLogger(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider scopeProvider, string name)
+        public Logger(ITestOutputHelper testOutputHelper, string name) : this(testOutputHelper, new LoggerExternalScopeProvider(), name)
+        {
+        }
+
+        public Logger(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider scopeProvider, string name)
         {
             _testOutputHelper = testOutputHelper;
             _scopeProvider = scopeProvider;
@@ -38,9 +45,9 @@ namespace Xunit.Logging
         }
     }
 
-    internal sealed class XUnitLogger<T> : Logger, ILogger<T>
+    internal sealed class Logger<T> : Logger, ILogger<T>
     {
-        public XUnitLogger(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider scopeProvider) : base(testOutputHelper, scopeProvider, typeof(T).FullName)
+        public Logger(ITestOutputHelper testOutputHelper, LoggerExternalScopeProvider scopeProvider) : base(testOutputHelper, scopeProvider, typeof(T).FullName)
         {
 
         }

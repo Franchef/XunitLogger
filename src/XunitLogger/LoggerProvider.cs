@@ -10,7 +10,7 @@ namespace Xunit.Logging
         private readonly ITestOutputHelper _testOutputHelper;
         private readonly LoggerExternalScopeProvider _scopeProvider = new LoggerExternalScopeProvider();
 
-        private readonly ConcurrentDictionary<string, Logger> _loggers = new ConcurrentDictionary<string, Logger>(StringComparer.OrdinalIgnoreCase);
+        private readonly ConcurrentDictionary<string, ILogger> _loggers = new ConcurrentDictionary<string, ILogger>(StringComparer.OrdinalIgnoreCase);
 
         public LoggerProvider()
         {
@@ -21,8 +21,8 @@ namespace Xunit.Logging
             _testOutputHelper = testOutputHelper;
         }
 
-        public ILogger CreateLogger(string categoryName) => _loggers.GetOrAdd(categoryName, name => new XUnitLogger(_testOutputHelper, _scopeProvider, name));
-        public ILogger<T> CreateLogger<T>() => _loggers.GetOrAdd(typeof(T).Name, name => new XUnitLogger<T>(_testOutputHelper, _scopeProvider));
+        public ILogger CreateLogger(string categoryName) => _loggers.GetOrAdd(categoryName, name => Logger.CreateLogger(_testOutputHelper, _scopeProvider, name));
+        public ILogger<T> CreateLogger<T>() => _loggers.GetOrAdd(typeof(T).Name, name => Logger.CreateLogger<T>(_testOutputHelper, _scopeProvider)) as ILogger<T>;
 
         public void Dispose()
         {
