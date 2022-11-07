@@ -15,7 +15,7 @@ namespace Xunit.Logging
             return _provider.CreateLogger(categoryName);
         }
 
-        public ILogger<T> CreateLogger<T>() => CreateLogger(typeof(T).Name);
+        public ILogger<T> CreateLogger<T>() => _provider.CreateLogger<T>();
 
         public void Dispose()
         {
