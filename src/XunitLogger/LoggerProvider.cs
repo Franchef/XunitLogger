@@ -8,6 +8,7 @@ namespace Xunit.Logging
     public class LoggerProvider : ILoggerProvider
     {
         private readonly ITestOutputHelper _testOutputHelper;
+        private readonly LoggerExternalScopeProvider _scopeProvider = new();
 
         private readonly ConcurrentDictionary<string, Logger> _loggers = new ConcurrentDictionary<string, Logger>(StringComparer.OrdinalIgnoreCase);
 
